@@ -6,7 +6,7 @@ class Livro:
         self._autores = autores
         self._edicao = edicao
         self._anoPublicacao = anoPublicacao
-        self._exemplares = exemplares
+        self._exemplaresDisponiveis = exemplares
         self._reservas = []
         self._observadores = []
 
