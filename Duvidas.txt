@@ -1,3 +1,13 @@
 Duvida 1: Sobre exemplar e livro se devem ser classes separadas e como elas deve ficar no diagrama.
 
-Duvida 2: 
+Duvida 2: Algum tipo ou None CHECAR (emprestimo)
+
+List[Obss]
+
+
+Emprestar
+devolver
+reservar
+observar
+consultarLivro
+consultarUsuario
