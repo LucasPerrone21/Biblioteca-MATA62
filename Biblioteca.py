@@ -4,6 +4,7 @@ from AlunoGrad import AlunoGrad
 from AlunoPos import AlunoPos
 from Professor import Professor
 from Emprestimo import Emprestimo
+from Reserva import Reserva
 
 
 class Biblioteca:
@@ -90,6 +91,38 @@ class Biblioteca:
         else:        
             print(f"Usuário com código '{codigoUsuario}' não encontrado!")
 
+    
+    def devolverLivro(self, codigoUsuario, codigoLivro):
+        usuario = self.getUsuario(codigoUsuario)
+        livro = self.getLivro(codigoLivro)
+
+        if usuario is not None and livro is not None:
+            for emprestimo in usuario.emprestimos:
+                if emprestimo.exemplar.livro.codigo == livro.codigo:
+                    emprestimo.exemplar.disponivel = True
+                    usuario.emprestimos.remove(emprestimo)
+                    print(f"O exemplar '{emprestimo.exemplar.codigo}' do livro '{livro.titulo}' foi devolvido pelo usuário '{usuario.nome}'!")
+                    return
+            print(f"O usuário '{usuario.nome}' não possui empréstimos do livro '{livro.titulo}'!")
+        else:
+            print(f"Usuário ou livro não encontrado!")
+    
+
+    def reservarLivro(self, codigoUsuario, codigoLivro):
+        usuario = self.getUsuario(codigoUsuario)
+        livro = self.getLivro(codigoLivro)
+
+        if usuario is not None and livro is not None:
+            if len(usuario.reservas) < 3:
+                reserva = Reserva(usuario, livro)
+                usuario.reservas.append(reserva)
+                livro.reservas.append(reserva)
+                print(f"O livro '{livro.titulo}' foi reservado pelo usuário '{usuario.nome}'!")
+            else:
+                print(f"O usuário '{usuario.nome}' já atingiu o limite de reservas!")
+        else:
+            print(f"Usuário ou livro não encontrado!")
+
 
 
 bib = Biblioteca()
@@ -101,3 +134,8 @@ bib.gerarExemplares(1, 1)
 bib.emprestarLivro(1, 1)
 bib.emprestarLivro(2, 1)
 
+# Testando o método devolverLivro
+bib.devolverLivro(1, 1)
+
+# Testando o método reservarLivro
+bib.reservarLivro(2, 1)
