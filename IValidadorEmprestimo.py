@@ -9,3 +9,7 @@ class IValidadorEmprestimo(ABC):
     @abstractmethod
     def checarEmprestimoLivro(self, usuario, livro):
         pass
+
+    @abstractmethod
+    def emprestimosAtivos(self, usuario):
+        pass

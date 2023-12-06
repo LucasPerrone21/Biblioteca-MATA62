@@ -9,11 +9,14 @@ class Emprestimo:
         self.exemplar = exemplar
         self.dataEmprestimo : date = self.setDataEmprestimo()
         self.dataDevolucao : date = self.setDataDevolucao()
+        self.estaEmMaos = True
 
     def setDataEmprestimo(self):
         self.dataEmprestimo = date.today()
+        return self.dataEmprestimo.strftime("%d/%m/%Y")
     
     def setDataDevolucao(self):
         acrescimo = self.usuario.getTempoEmprestimos()
         acrescimo = timedelta(days=acrescimo)
         self.dataDevolucao = date.today() + acrescimo
+        return self.dataDevolucao.strftime("%d/%m/%Y")

@@ -4,10 +4,12 @@ from Observer import Observer
 
 class Professor(Usuario,Observer):
     def __init__(self, nome: str, codigo: int):
-        super().__init__(nome, codigo)
+        Observer.__init__(self)
+        Usuario.__init__(self, nome, codigo)
         self.tempoEmprestimo = 7
         self.maximoEmprestimos = None
         self.validadorEmprestimo : ValidadorEmprestimoProfessor = ValidadorEmprestimoProfessor()
     
     def update(self, mensagem: str):
+        self.qtdNotificacoes += 1
         print(f'Olá {self.nome}, {mensagem}')

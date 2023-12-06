@@ -24,7 +24,7 @@ class Usuario():
     
     def checarEmprestimo(self, livro: Livro):
         for emprestimo in self.emprestimos:
-            if emprestimo.livro.codigo == livro.codigo:
+            if (emprestimo.exemplar.livro.codigo == livro.codigo) and (emprestimo.estaEmMaos == True):
                 return True
         return False
     
@@ -36,6 +36,9 @@ class Usuario():
     
     def fazerEmprestimo(self, emprestimo : Emprestimo):
         self.emprestimos.append(emprestimo)
+
+    def addReserva(self, reserva):
+        self.reservas.append(reserva)
 
     def removeReserva(self, livro: Livro):
         for reserva in self.reservas:

@@ -12,3 +12,6 @@ class ValidadorEmprestimoProfessor(IValidadorEmprestimo):
     
     def checarEmprestimoLivro(self, usuario: Usuario, livro: Livro) -> Exemplar:
         return livro.getExemplarDisponivel()
+    
+    def emprestimosAtivos(self, usuario: Usuario) -> None:
+        pass

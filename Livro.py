@@ -22,6 +22,12 @@ class Livro:
     def addObserver(self, observer: Observer):
         self.observers.append(observer)
 
+    def addReserva(self, reserva: Reserva):
+        self.reservas.append(reserva)
+        if len(self.reservas) > 2:
+            self.update()
+
+
     def getQtdReservas(self):
         return len(self.reservas)
     

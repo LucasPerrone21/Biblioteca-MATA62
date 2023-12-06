@@ -9,4 +9,5 @@ class Reserva:
         self.dataReserva : date = self.setDataReserva()
     
     def setDataReserva(self):
-        self.dataReserva = date.today()
+        self.dataReserva = date.today().strftime("%d/%m/%Y")
+        return self.dataReserva

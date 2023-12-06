@@ -11,3 +11,6 @@ class Exemplar():
     def emprestar(self, emprestimo: Emprestimo):
         self.emprestimos.append(emprestimo)
         self.disponivel = False
+
+    def getUltimoEmprestimo(self):
+        return self.emprestimos[-1]

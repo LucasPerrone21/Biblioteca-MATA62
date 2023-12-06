@@ -5,7 +5,8 @@ import Exemplar
 
 class ValidadorEmprestimoAluno(IValidadorEmprestimo):
     def validar(self, usuario: Usuario) -> bool:
-        if (len(usuario.emprestimos) >= usuario.maximoEmprestimos) or usuario.isDevedor:
+
+        if (len(self.emprestimosAtivos(usuario)) >= usuario.maximoEmprestimos) or usuario.isDevedor:
             return False
         else:
             return True
@@ -25,3 +26,10 @@ class ValidadorEmprestimoAluno(IValidadorEmprestimo):
                 if qtdExemplaresDisponiveis > qtdReservas:
                     return livro.getExemplarDisponivel() 
         return None
+    
+    def emprestimosAtivos(self, usuario: Usuario) -> bool:
+        emprestimosAtivos = []
+        for emprestimos in usuario.emprestimos:
+            if emprestimos.estaEmMaos:
+                emprestimosAtivos.append(emprestimos)
+        return emprestimosAtivos

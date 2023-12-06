@@ -11,3 +11,12 @@ reservar
 observar
 consultarLivro
 consultarUsuario
+
+
+emp idUser idLivro
+res idUser idLivro
+dev idUser idLivro
+obs idUser idLivro
+liv idLivro
+usu idUser
+ntf idUser

@@ -1,17 +1,21 @@
-class UM:
-    def __init__(self):
-        self.nome = "marcos"
-        self.cidade= 'sao paulo'
+def funcao(x,y,z):
+    print(type(x))
+    print(type(y))
+    print(type(z))
 
-class DOIS(UM):
-    def __init__(self):
-        super().__init__()
-        self.nome = "planta"
-        self.idade = 23
-    
-    def getCidade(self):
-        return self.cidade
-    
-x = DOIS()
 
-print(x.getCidade)
+
+x = input("Digite 3 valores: ").split()
+
+funcao(*x)
+
+print(" ")
+
+for i in range(len(x)):
+    try:
+        x[i] = int(x[i])
+    except:
+        pass
+
+funcao(*x)
+
